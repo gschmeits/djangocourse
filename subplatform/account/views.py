@@ -3,8 +3,7 @@ from django.http import HttpResponse
 from .forms import CreateUserForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout 
-from client import views as c
-from writer import views as w
+
 
 def home(request):
     return render(request, 'account/index.html')
@@ -17,7 +16,7 @@ def register(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')
+            return redirect('my_login')
         else:
             return HttpResponse("Form is not valid")
 
